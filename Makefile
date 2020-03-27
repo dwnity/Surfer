@@ -11,7 +11,7 @@ OBJ = $(SRC:.c=.o)
 COBJ = $(CSRC:.c=.o)
 WEBEXTOBJ = $(WEBEXTSRC:.c=.o)
 
-all: options libsurf-webext.so surf
+all: options libsurf-webext.so $(NAME)
 
 options:
 	@echo surf build options:
@@ -37,11 +37,11 @@ libsurf-webext.so: $(WEBEXTOBJ) $(COBJ)
 	$(CC) -shared -Wl,-soname,$@ $(LDFLAGS) -o $@ \
 	    $(WEBEXTOBJ) $(COBJ) $(WEBEXTLIBS)
 
-surf: $(OBJ) $(COBJ)
+$(NAME): $(OBJ) $(COBJ)
 	$(CC) $(SURFLDFLAGS) $(LDFLAGS) -o $@ $(OBJ) $(COBJ) $(LIBS)
 
 clean:
-	rm -f surf $(OBJ) $(COBJ)
+	rm -f $(NAME) $(OBJ) $(COBJ)
 	rm -f libsurf-webext.so $(WEBEXTOBJ)
 
 distclean: clean
@@ -58,8 +58,8 @@ dist: distclean
 
 install: all
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
-	cp -f surf $(DESTDIR)$(PREFIX)/bin
-	chmod 755 $(DESTDIR)$(PREFIX)/bin/surf
+	cp -f $(NAME) $(DESTDIR)$(PREFIX)/bin
+	chmod 755 $(DESTDIR)$(PREFIX)/bin/$(NAME)
 	mkdir -p $(DESTDIR)$(LIBDIR)
 	cp -f libsurf-webext.so $(DESTDIR)$(LIBDIR)
 	chmod 644 $(DESTDIR)$(LIBDIR)/libsurf-webext.so
@@ -68,7 +68,7 @@ install: all
 	chmod 644 $(DESTDIR)$(MANPREFIX)/man1/surf.1
 
 uninstall:
-	rm -f $(DESTDIR)$(PREFIX)/bin/surf
+	rm -f $(DESTDIR)$(PREFIX)/bin/$(NAME)
 	rm -f $(DESTDIR)$(MANPREFIX)/man1/surf.1
 	rm -f $(DESTDIR)$(LIBDIR)/libsurf-webext.so
 	- rmdir $(DESTDIR)$(LIBDIR)

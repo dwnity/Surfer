@@ -1418,10 +1418,10 @@ createwindow(Client *c)
 		w = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 
 		wmstr = g_path_get_basename(argv0);
-		gtk_window_set_wmclass(GTK_WINDOW(w), wmstr, "Surf");
+		gtk_window_set_wmclass(GTK_WINDOW(w), wmstr, NAME);
 		g_free(wmstr);
 
-		wmstr = g_strdup_printf("%s[%lu]", "Surf", c->pageid);
+		wmstr = g_strdup_printf("%s[%lu]",NAME, c->pageid);
 		gtk_window_set_role(GTK_WINDOW(w), wmstr);
 		g_free(wmstr);
 
@@ -2111,7 +2111,7 @@ main(int argc, char *argv[])
 	if (argc > 0)
 		arg.v = argv[0];
 	else
-		arg.v = "about:blank";
+		arg.v = HOMEPAGE;
 
 	setup();
 	c = newclient(NULL);
