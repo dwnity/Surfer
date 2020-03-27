@@ -5,6 +5,8 @@ surf is a simple Web browser based on WebKit/GTK+.
 Requirements
 ------------
 In order to build surf you need GTK+ and Webkit/GTK+ header files.
+on ubuntu based distros that is installed by
+sudo apt install webkit2gtk-4.0 libgcr-3-dev
 
 In order to use the functionality of the url-bar, also install dmenu[0].
 
