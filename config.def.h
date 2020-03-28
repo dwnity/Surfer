@@ -1,13 +1,13 @@
-#define HOMEPAGE "https://duckduckgo.com/"
-#define NAME "Surfer"
+#define HOMEPAGE "https://web.whatsapp.com"
+#define NAME "WhatsApp"
 /* modifier 0 means no modifier */
 static int surfuseragent    = 1;  /* Append Surf version to default WebKit user agent */
 static char *fulluseragent  = ""; /* Or override the whole user agent string */
-static char *scriptfile     = "~/.config/Surfer/script.js";
-static char *styledir       = "~/.config/Surfer/styles/";
-static char *certdir        = "~/.config/Surfer/certificates/";
-static char *cachedir       = "~/.cache/Surfer/cache/";
-static char *cookiefile     = "~/.local/Surfer/cookies.txt";
+static char *scriptfile     = "~/.config/WhatsApp/script.js";
+static char *styledir       = "~/.config/WhatsApp/styles/";
+static char *certdir        = "~/.config/WhatsApp/certificates/";
+static char *cachedir       = "~/.cache/WhatsApp/cache/";
+static char *cookiefile     = "~/.local/WhatsApp/cookies.txt";
 
 /* Webkit default features */
 /* Highest priority value will be used.
