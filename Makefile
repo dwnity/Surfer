@@ -41,7 +41,7 @@ $(NAME): $(OBJ) $(COBJ)
 	$(CC) $(SURFLDFLAGS) $(LDFLAGS) -o $@ $(OBJ) $(COBJ) $(LIBS)
 
 clean:
-	rm -f $(NAME) $(OBJ) $(COBJ)
+	rm -f $(NAME) $(NAME).desktop $(OBJ) $(COBJ)
 	rm -f libsurf-webext.so $(WEBEXTOBJ)
 
 distclean: clean
