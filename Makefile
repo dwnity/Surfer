@@ -69,6 +69,8 @@ install: all
 	sed "s/VERSION/$(VERSION)/g" < surf.1 > $(DESTDIR)$(MANPREFIX)/man1/surf.1
 	chmod 644 $(DESTDIR)$(MANPREFIX)/man1/surf.1
 	mkdir -p $(DESTDIR)$(PREFIX)/share/applications
+	mkdir -p $(DESTDIR)$(PREFIX)/share/icons
+	cp -f $(NAME).png $(DESTDIR)$(PREFIX)/share/icons
 	cp -f $(NAME).desktop $(DESTDIR)$(PREFIX)/share/applications
 
 uninstall:
@@ -77,6 +79,7 @@ uninstall:
 	rm -f $(DESTDIR)$(LIBDIR)/libsurf-webext.so
 	rmdir $(DESTDIR)$(LIBDIR)
 	rm -f $(DESTDIR)$(PREFIX)/share/applications/$(NAME).desktop
+	rm -f $(DESTDIR)$(PREFIX)/share/icons/$(NAME).png
 
 .SUFFIXES: .so .o .c
 .PHONY: all options clean-dist clean dist install uninstall
