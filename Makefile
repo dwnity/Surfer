@@ -45,6 +45,7 @@ $(NAME): $(OBJ) $(COBJ)
 clean:
 	rm -f $(NAME) $(NAME).desktop $(OBJ) $(COBJ)
 	rm -f libsurf-webext.so $(WEBEXTOBJ)
+	rm -f config.h
 
 distclean: clean
 	rm -f config.h surf-$(VERSION).tar.gz
