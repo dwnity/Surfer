@@ -62,6 +62,7 @@ typedef enum {
 	FontSize,
 	FrameFlattening,
 	Geolocation,
+	Notifications,
 	HideBackground,
 	Inspector,
 	Java,
@@ -238,7 +239,7 @@ static void clicknewwindow(Client *c, const Arg *a, WebKitHitTestResult *h);
 static void clickexternplayer(Client *c, const Arg *a, WebKitHitTestResult *h);
 
 static char winid[64];
-static char togglestats[12];
+static char togglestats[13];
 static char pagestats[2];
 static Atom atoms[AtomLast];
 static Window embed;
@@ -277,6 +278,7 @@ static ParamName loadcommitted[] = {
 	FontSize,
 	FrameFlattening,
 	Geolocation,
+	Notifications,
 	HideBackground,
 	Inspector,
 	Java,
@@ -648,15 +650,16 @@ gettogglestats(Client *c)
 	togglestats[0] = cookiepolicy_set(cookiepolicy_get());
 	togglestats[1] = curconfig[CaretBrowsing].val.i ?   'C' : 'c';
 	togglestats[2] = curconfig[Geolocation].val.i ?     'G' : 'g';
-	togglestats[3] = curconfig[DiskCache].val.i ?       'D' : 'd';
-	togglestats[4] = curconfig[LoadImages].val.i ?      'I' : 'i';
-	togglestats[5] = curconfig[JavaScript].val.i ?      'S' : 's';
-	togglestats[6] = curconfig[Plugins].val.i ?         'V' : 'v';
-	togglestats[7] = curconfig[Style].val.i ?           'M' : 'm';
-	togglestats[8] = curconfig[FrameFlattening].val.i ? 'F' : 'f';
-	togglestats[9] = curconfig[Certificate].val.i ?     'X' : 'x';
-	togglestats[10] = curconfig[StrictTLS].val.i ?      'T' : 't';
-	togglestats[11] = '\0';
+	togglestats[3] = curconfig[Notifications].val.i ?   'Y' : 'y';
+	togglestats[4] = curconfig[DiskCache].val.i ?       'D' : 'd';
+	togglestats[5] = curconfig[LoadImages].val.i ?      'I' : 'i';
+	togglestats[6] = curconfig[JavaScript].val.i ?      'S' : 's';
+	togglestats[7] = curconfig[Plugins].val.i ?         'V' : 'v';
+	togglestats[8] = curconfig[Style].val.i ?           'M' : 'm';
+	togglestats[9] = curconfig[FrameFlattening].val.i ? 'F' : 'f';
+	togglestats[10] = curconfig[Certificate].val.i ?    'X' : 'x';
+	togglestats[11] = curconfig[StrictTLS].val.i ?      'T' : 't';
+	togglestats[12] = '\0';
 }
 
 void
@@ -781,6 +784,9 @@ setparameter(Client *c, int refresh, ParamName p, const Arg *a)
 		webkit_settings_set_enable_frame_flattening(s, a->i);
 		break;
 	case Geolocation:
+		refresh = 0;
+		break;
+	case Notifications:
 		refresh = 0;
 		break;
 	case HideBackground:
@@ -1005,6 +1011,7 @@ newwindow(Client *c, const Arg *a, int noembed)
 	}
 	cmd[i++] = curconfig[RunInFullscreen].val.i ? "-F" : "-f" ;
 	cmd[i++] = curconfig[Geolocation].val.i ?     "-G" : "-g" ;
+	cmd[i++] = curconfig[Notifications].val.i ?   "-Y" : "-y" ;
 	cmd[i++] = curconfig[LoadImages].val.i ?      "-I" : "-i" ;
 	cmd[i++] = curconfig[KioskMode].val.i ?       "-K" : "-k" ;
 	cmd[i++] = curconfig[Style].val.i ?           "-M" : "-m" ;
@@ -1574,6 +1581,8 @@ permissionrequested(WebKitWebView *v, WebKitPermissionRequest *r, Client *c)
 
 	if (WEBKIT_IS_GEOLOCATION_PERMISSION_REQUEST(r)) {
 		param = Geolocation;
+	} else if (WEBKIT_IS_NOTIFICATION_PERMISSION_REQUEST(r)) {
+		param = Notifications;
 	} else if (WEBKIT_IS_USER_MEDIA_PERMISSION_REQUEST(r)) {
 		if (webkit_user_media_permission_is_for_audio_device(
 		    WEBKIT_USER_MEDIA_PERMISSION_REQUEST(r)))
@@ -2025,6 +2034,14 @@ main(int argc, char *argv[])
 	case 'G':
 		defconfig[Geolocation].val.i = 1;
 		defconfig[Geolocation].prio = 2;
+		break;
+	case 'y':
+		defconfig[Notifications].val.i = 0;
+		defconfig[Notifications].prio = 2;
+		break;
+	case 'Y':
+		defconfig[Notifications].val.i = 1;
+		defconfig[Notifications].prio = 2;
 		break;
 	case 'i':
 		defconfig[LoadImages].val.i = 0;
