@@ -1425,7 +1425,7 @@ createwindow(Client *c)
 		w = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 
 		wmstr = g_path_get_basename(argv0);
-		gtk_window_set_wmclass(GTK_WINDOW(w), wmstr, NAME);
+		gtk_window_set_wmclass(GTK_WINDOW(w), wmstr, "Surfer");
 		g_free(wmstr);
 
 		wmstr = g_strdup_printf("%s[%lu]",NAME, c->pageid);
