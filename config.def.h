@@ -1,13 +1,13 @@
-#define HOMEPAGE "https://duckduckgo.com/"
-#define NAME "Surfer"
+#define HOMEPAGE "https://www.youtube.com/"
+#define NAME "YouTube"
 /* modifier 0 means no modifier */
 static int surfuseragent    = 1;  /* Append Surf version to default WebKit user agent */
 static char *fulluseragent  = ""; /* Or override the whole user agent string */
-static char *scriptfile     = "~/.config/Surfer/script.js";
-static char *styledir       = "~/.config/Surfer/styles/";
-static char *certdir        = "~/.config/Surfer/certificates/";
-static char *cachedir       = "~/.cache/Surfer/cache/";
-static char *cookiefile     = "~/.local/Surfer/cookies.txt";
+static char *scriptfile     = "~/.config/YouTube/script.js";
+static char *styledir       = "~/.config/YouTube/styles/";
+static char *certdir        = "~/.config/YouTube/certificates/";
+static char *cachedir       = "~/.cache/YouTube/cache/";
+static char *cookiefile     = "~/.local/YouTube/cookies.txt";
 
 /* Webkit default features */
 /* Highest priority value will be used.
