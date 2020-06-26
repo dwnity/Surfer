@@ -1,13 +1,13 @@
 #define HOMEPAGE "https://duckduckgo.com/"
-#define NAME "SurfApps"
+#define NAME "Surfer"
 /* modifier 0 means no modifier */
 static int surfuseragent    = 1;  /* Append Surf version to default WebKit user agent */
 static char *fulluseragent  = ""; /* Or override the whole user agent string */
-static char *scriptfile     = "~/.config/SurfApps/script.js";
-static char *styledir       = "~/.config/SurfApps/styles/";
-static char *certdir        = "~/.config/SurfApps/certificates/";
-static char *cachedir       = "~/.cache/SurfApps/cache/";
-static char *cookiefile     = "~/.local/SurfApps/cookies.txt";
+static char *scriptfile     = "~/.config/Surfer/script.js";
+static char *styledir       = "~/.config/Surfer/styles/";
+static char *certdir        = "~/.config/Surfer/certificates/";
+static char *cachedir       = "~/.cache/Surfer/cache/";
+static char *cookiefile     = "~/.local/Surfer/cookies.txt";
 
 /* Webkit default features */
 /* Highest priority value will be used.
