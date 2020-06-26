@@ -62,7 +62,6 @@ typedef enum {
 	FontSize,
 	FrameFlattening,
 	Geolocation,
-	Notifications,
 	HideBackground,
 	Inspector,
 	Java,
@@ -70,6 +69,7 @@ typedef enum {
 	KioskMode,
 	LoadImages,
 	MediaManualPlay,
+        Notifications,
 	Plugins,
 	PreferredLanguages,
 	RunInFullscreen,
@@ -239,7 +239,7 @@ static void clicknewwindow(Client *c, const Arg *a, WebKitHitTestResult *h);
 static void clickexternplayer(Client *c, const Arg *a, WebKitHitTestResult *h);
 
 static char winid[64];
-static char togglestats[13];
+static char togglestats[12];
 static char pagestats[2];
 static Atom atoms[AtomLast];
 static Window embed;
@@ -650,15 +650,15 @@ gettogglestats(Client *c)
 	togglestats[0] = cookiepolicy_set(cookiepolicy_get());
 	togglestats[1] = curconfig[CaretBrowsing].val.i ?   'C' : 'c';
 	togglestats[2] = curconfig[Geolocation].val.i ?     'G' : 'g';
-	togglestats[3] = curconfig[Notifications].val.i ?   'Y' : 'y';
-	togglestats[4] = curconfig[DiskCache].val.i ?       'D' : 'd';
-	togglestats[5] = curconfig[LoadImages].val.i ?      'I' : 'i';
-	togglestats[6] = curconfig[JavaScript].val.i ?      'S' : 's';
-	togglestats[7] = curconfig[Plugins].val.i ?         'V' : 'v';
-	togglestats[8] = curconfig[Style].val.i ?           'M' : 'm';
-	togglestats[9] = curconfig[FrameFlattening].val.i ? 'F' : 'f';
-	togglestats[10] = curconfig[Certificate].val.i ?    'X' : 'x';
-	togglestats[11] = curconfig[StrictTLS].val.i ?      'T' : 't';
+	togglestats[3] = curconfig[DiskCache].val.i ?       'D' : 'd';
+	togglestats[4] = curconfig[LoadImages].val.i ?      'I' : 'i';
+	togglestats[5] = curconfig[JavaScript].val.i ?      'S' : 's';
+	togglestats[6] = curconfig[Plugins].val.i ?         'V' : 'v';
+	togglestats[7] = curconfig[Style].val.i ?           'M' : 'm';
+	togglestats[8] = curconfig[FrameFlattening].val.i ? 'F' : 'f';
+	togglestats[9] = curconfig[Certificate].val.i ?     'X' : 'x';
+	togglestats[10] = curconfig[StrictTLS].val.i ?      'T' : 't';
+        togglestats[11] = curconfig[Notifications].val.i ?  'L' : 'l';
 	togglestats[12] = '\0';
 }
 
@@ -1011,7 +1011,7 @@ newwindow(Client *c, const Arg *a, int noembed)
 	}
 	cmd[i++] = curconfig[RunInFullscreen].val.i ? "-F" : "-f" ;
 	cmd[i++] = curconfig[Geolocation].val.i ?     "-G" : "-g" ;
-	cmd[i++] = curconfig[Notifications].val.i ?   "-Y" : "-y" ;
+	cmd[i++] = curconfig[Notifications].val.i ?   "-L" : "-l" ;
 	cmd[i++] = curconfig[LoadImages].val.i ?      "-I" : "-i" ;
 	cmd[i++] = curconfig[KioskMode].val.i ?       "-K" : "-k" ;
 	cmd[i++] = curconfig[Style].val.i ?           "-M" : "-m" ;
@@ -2035,11 +2035,11 @@ main(int argc, char *argv[])
 		defconfig[Geolocation].val.i = 1;
 		defconfig[Geolocation].prio = 2;
 		break;
-	case 'y':
+	case 'l':
 		defconfig[Notifications].val.i = 0;
 		defconfig[Notifications].prio = 2;
 		break;
-	case 'Y':
+	case 'L':
 		defconfig[Notifications].val.i = 1;
 		defconfig[Notifications].prio = 2;
 		break;
