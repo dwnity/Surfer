@@ -50,8 +50,6 @@ enum {
 
 typedef enum {
 	AcceleratedCanvas,
-	AccessMicrophone,
-	AccessWebcam,
 	CaretBrowsing,
 	Certificate,
 	CookiePolicies,
@@ -271,8 +269,6 @@ static ParamName loadtransient[] = {
 
 static ParamName loadcommitted[] = {
 	AcceleratedCanvas,
-//	AccessMicrophone,
-//	AccessWebcam,
 	CaretBrowsing,
 	DefaultCharset,
 	FontSize,
@@ -742,10 +738,6 @@ setparameter(Client *c, int refresh, ParamName p, const Arg *a)
 	case AcceleratedCanvas:
 		webkit_settings_set_enable_accelerated_2d_canvas(s, a->i);
 		break;
-	case AccessMicrophone:
-		return; /* do nothing */
-	case AccessWebcam:
-		return; /* do nothing */
 	case CaretBrowsing:
 		webkit_settings_set_enable_caret_browsing(s, a->i);
 		refresh = 0;
@@ -1583,13 +1575,6 @@ permissionrequested(WebKitWebView *v, WebKitPermissionRequest *r, Client *c)
 		param = Geolocation;
 	} else if (WEBKIT_IS_NOTIFICATION_PERMISSION_REQUEST(r)) {
 		param = Notifications;
-	} else if (WEBKIT_IS_USER_MEDIA_PERMISSION_REQUEST(r)) {
-		if (webkit_user_media_permission_is_for_audio_device(
-		    WEBKIT_USER_MEDIA_PERMISSION_REQUEST(r)))
-			param = AccessMicrophone;
-		else if (webkit_user_media_permission_is_for_video_device(
-		         WEBKIT_USER_MEDIA_PERMISSION_REQUEST(r)))
-			param = AccessWebcam;
 	} else {
 		return FALSE;
 	}

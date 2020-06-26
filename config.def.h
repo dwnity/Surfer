@@ -18,8 +18,6 @@ static char *cookiefile     = "~/.local/SurfApps/cookies.txt";
 static Parameter defconfig[ParameterLast] = {
 	/* parameter                    Arg value       priority */
 	[AcceleratedCanvas]   =       { { .i = 1 },     },
-	[AccessMicrophone]    =       { { .i = 0 },     },
-	[AccessWebcam]        =       { { .i = 0 },     },
 	[Certificate]         =       { { .i = 0 },     },
 	[CaretBrowsing]       =       { { .i = 0 },     },
 	[CookiePolicies]      =       { { .v = "@Aa" }, },
