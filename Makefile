@@ -40,7 +40,7 @@ libsurf-webext.so: $(WEBEXTOBJ) $(COBJ)
 $(NAME): $(OBJ) $(COBJ)
 	$(CC) $(SURFLDFLAGS) $(LDFLAGS) -o $@ $(OBJ) $(COBJ) $(LIBS)
 	cp Desktopfile $@.desktop
-	sed -i 's/Surfer/$@/' $@.desktop
+	sed -i 's/Jisho/$@/' $@.desktop
 
 clean:
 	rm -f $(NAME) $(NAME).desktop $(OBJ) $(COBJ)

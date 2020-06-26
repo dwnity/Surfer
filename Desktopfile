@@ -1,12 +1,12 @@
 [Desktop Entry]
 Version=1.0
-Name=Surfer
+Name=Jisho
 Keywords=Internet;WWW;Browser;Web;Explorer
-Exec=Surfer %u
+Exec=Jisho %u
 Terminal=false
 X-MultipleArgs=false
 Type=Application
-Icon=Surfer
+Icon=Jisho
 Categories=GNOME;GTK;Network;WebBrowser;
 MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/chrome;video/webm;application/x-xpinstall;
 StartupNotify=true
