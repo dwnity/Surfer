@@ -66,7 +66,6 @@ typedef enum {
 	JavaScript,
 	KioskMode,
 	LoadImages,
-	MediaManualPlay,
         Notifications,
 	Plugins,
 	PreferredLanguages,
@@ -279,7 +278,6 @@ static ParamName loadcommitted[] = {
 	Inspector,
 	Java,
 //	KioskMode,
-	MediaManualPlay,
 	Plugins,
 	RunInFullscreen,
 	ScrollBars,
@@ -799,9 +797,6 @@ setparameter(Client *c, int refresh, ParamName p, const Arg *a)
 	case LoadImages:
 		webkit_settings_set_auto_load_images(s, a->i);
 		break;
-	case MediaManualPlay:
-		webkit_settings_set_media_playback_requires_user_gesture(s, a->i);
-		break;
 	case Plugins:
 		webkit_settings_set_enable_plugins(s, a->i);
 		break;
@@ -1113,7 +1108,6 @@ newview(Client *c, WebKitWebView *rv)
 		   "enable-site-specific-quirks", curconfig[SiteQuirks].val.i,
 		   "enable-smooth-scrolling", curconfig[SmoothScrolling].val.i,
 		   "enable-webgl", curconfig[WebGL].val.i,
-		   "media-playback-requires-user-gesture", curconfig[MediaManualPlay].val.i,
 		   NULL);
 /* For more interesting settings, have a look at
  * http://webkitgtk.org/reference/webkit2gtk/stable/WebKitSettings.html */
