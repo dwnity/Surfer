@@ -1,4 +1,4 @@
-#define HOMEPAGE "https://duckduckgo.com/"
+#define HOMEPAGE "https://github.com/"
 #define NAME "GitHub"
 /* modifier 0 means no modifier */
 static int surfuseragent    = 1;  /* Append Surf version to default WebKit user agent */
