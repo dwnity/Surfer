@@ -71,8 +71,10 @@ install: all
 	chmod 644 $(DESTDIR)$(MANPREFIX)/man1/surf.1
 	mkdir -p $(DESTDIR)$(PREFIX)/share/applications
 	mkdir -p $(DESTDIR)$(PREFIX)/share/icons
+	mkdir -p ~/.config/$(NAME)
 	cp -f $(NAME).png $(DESTDIR)$(PREFIX)/share/icons
 	cp -f $(NAME).desktop $(DESTDIR)$(PREFIX)/share/applications
+	cp -r $(NAME).js ~/.config/$(NAME)/script.js
 
 uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/bin/$(NAME)
@@ -81,6 +83,7 @@ uninstall:
 	rmdir $(DESTDIR)$(LIBDIR)
 	rm -f $(DESTDIR)$(PREFIX)/share/applications/$(NAME).desktop
 	rm -f $(DESTDIR)$(PREFIX)/share/icons/$(NAME).png
+	rm -r ~/.config/$(NAME)
 
 .SUFFIXES: .so .o .c
 .PHONY: all options clean-dist clean dist install uninstall
