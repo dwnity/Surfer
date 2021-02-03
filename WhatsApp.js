@@ -43,6 +43,7 @@ var checkExist = setInterval(function() {
 window.addEventListener("click", function() {
   console.log("Click");
   var check = 0;
+    //executed twice, why?
   var checkExist = setInterval(function() {
     if (document.getElementById("app").getElementsByClassName('two')[0].childNodes[2].style.display == 'none') {
       console.log("Exists!");
@@ -70,7 +71,8 @@ function main(){
           document.getElementById("app").getElementsByClassName('two')[0].childNodes[1].childNodes[1].style.display = '';
           document.getElementById("app").getElementsByClassName('two')[0].childNodes[2].style.display = 'none';
           document.getElementById("app").getElementsByClassName('two')[0].childNodes[1].childNodes[2].style.width = '100%';
-          menu();
+          if(document.getElementById("main").getElementsByClassName('back_button') === null)
+              menu();
 
         };
       }
@@ -108,6 +110,7 @@ function menu(){
       document.getElementById('app').getElementsByClassName('two')[0].childNodes[2].style.display = 'block';\
       document.getElementById('app').getElementsByClassName('two')[0].childNodes[1].childNodes[2].style.width = '';\
       document.getElementById('app').getElementsByClassName('two')[0].childNodes[1].childNodes[1].style.display = 'none';\
+      this.parentNode.remove(this);\
       \"><span data-icon='left'><svg class='svg_back' id='Layer_1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21 21' width='21' height='21'><path fill='#263238' fill-opacity='.33' d='M4.8 6.1l5.7 5.7 5.7-5.7 1.6 1.6-7.3 7.2-7.3-7.2 1.6-1.6z'></path></svg></span></a>";
 
     var eElement = document.getElementById("main").childNodes[1];
