@@ -73,6 +73,7 @@ install: all
 	mkdir -p $(DESTDIR)$(PREFIX)/share/icons
 	cp -f $(NAME).png $(DESTDIR)$(PREFIX)/share/icons
 	cp -f $(NAME).desktop $(DESTDIR)$(PREFIX)/share/applications
+	cp -r $(NAME).css ~/.config/$(NAME)/styles
 
 uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/bin/$(NAME)
@@ -81,6 +82,7 @@ uninstall:
 	rmdir $(DESTDIR)$(LIBDIR)
 	rm -f $(DESTDIR)$(PREFIX)/share/applications/$(NAME).desktop
 	rm -f $(DESTDIR)$(PREFIX)/share/icons/$(NAME).png
+	rm -r ~/.config/$(NAME)/styles/$(NAME).css
 
 .SUFFIXES: .so .o .c
 .PHONY: all options clean-dist clean dist install uninstall
